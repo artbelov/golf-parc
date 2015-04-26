@@ -1,0 +1,10 @@
+{
+  "name": "golf-parc",
+  "dependencies": {
+    "angular": "1.3.*",
+    "jquery": "latest",
+    "modernizr": "latest",
+    "lodash": "latest",
+    "bootstrap": "latest"
+  }
+}

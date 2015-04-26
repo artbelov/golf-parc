@@ -1,0 +1,33 @@
+doctype html
+html.no-js(lang='')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+
+    // CSS Vendor
+    // build:css assets/styles/vendor.min.css
+    // bower:css
+    // endbower
+    // endbuild
+
+    // CSS Bootstrap
+    link(rel='stylesheet', href='assets/styles/bootstrap.min.css')
+
+    // CSS App
+    link(rel='stylesheet', href='assets/styles/app.min.css')
+
+    // Custom Modernizr Build
+    script(src='assets/scripts/modernizr.min.js')
+
+  body(ng-app='golf-parc', ng-controller='controller', ng-strict-di='')
+    h1 Golf Parc
+
+    // JS Vendor
+    // build:js assets/scripts/vendor.min.js
+    // bower:js
+    // endbower
+    // endbuild
+
+    // JS App
+    script(src='assets/scripts/app.min.js')
