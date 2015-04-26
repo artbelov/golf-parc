@@ -222,19 +222,6 @@ module.exports = function (grunt) {
       }
     },
 
-    compress: {
-      app: {
-        options: {
-          archive: '<%= pkg.name %>-app.zip'
-        },
-        files: [
-          {
-            src: ['<%= project.app %>**/*']
-          }
-        ]
-      }
-    },
-
     copy: {
       fonts: {
         expand: true,
@@ -371,8 +358,6 @@ module.exports = function (grunt) {
   grunt.registerTask('lint', ['jshint', 'jscs', 'csslint']);
 
   grunt.registerTask('serve', ['bs-init', 'watch']);
-
-  grunt.registerTask('deploy', ['build', 'compress', 'lint']);
 
   grunt.registerTask('build', ['clean', 'imagemin', 'copy', 'jade', 'uncss', 'wiredep', 'useminPrepare', 'sass', 'modernizr', 'autoprefixer', 'cssmin:generated', 'ngAnnotate', 'concat:generated', 'uglify:generated', 'usemin', 'uglify:app', 'csscomb', 'cssmin:app', 'usebanner']);
 };
