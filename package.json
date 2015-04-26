@@ -1,7 +1,7 @@
 {
   "name": "golf-parc",
   "title": "Golf Parc",
-  "description": "Grunt workflow for SPA-Application on the basis of Bootstrap and Angular",
+  "description": "Grunt workflow for SPA-Application on the basis of Bootstrap and Angular.",
   "version": "1.0.0",
   "author": "Artem Belov <artbelov@live.ru>",
   "repository": {

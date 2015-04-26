@@ -2,6 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/artbelov/golf-parc/master.svg?style=flat)](https://travis-ci.org/artbelov/golf-parc)
 [![devDependency Status](https://img.shields.io/david/dev/artbelov/golf-parc.svg?style=flat)](https://david-dm.org/artbelov/golf-parc#info=devDependencies)
+
 ![Built with Grunt](https://raw.githubusercontent.com/pixel-cookers/built-with-badges/master/grunt/grunt-short-flat.png)
 ![Built with Bower](https://raw.githubusercontent.com/pixel-cookers/built-with-badges/master/bower/bower-short-flat.png)
 ![Built with Angular](https://raw.githubusercontent.com/pixel-cookers/built-with-badges/master/angular/angular-short-flat.png)
