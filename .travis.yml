@@ -18,4 +18,5 @@ install:
   - bower install
 
 script:
-  - grunt
+  - grunt build
+  - grunt lint
