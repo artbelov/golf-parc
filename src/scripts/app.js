@@ -4,11 +4,11 @@
   'use strict';
 
   /* @ngInject */
-  function Controller ($scope) {
+  function MainCtrl ($scope) {
     console.log($scope)
   }
 
   angular
     .module('golf-parc', [])
-    .controller('controller', Controller);
+    .controller('MainCtrl', MainCtrl);
 })();
