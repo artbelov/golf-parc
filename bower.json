@@ -2,9 +2,9 @@
   "name": "golf-parc",
   "dependencies": {
     "angular": "1.3.*",
-    "jquery": "latest",
-    "modernizr": "latest",
-    "lodash": "latest",
-    "bootstrap": "latest"
+    "jquery": "2.*",
+    "lodash": "3.*",
+    "modernizr": "2.*",
+    "bootstrap": "3.*"
   }
 }

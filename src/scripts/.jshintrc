@@ -1,11 +1,12 @@
 {
+  "quotmark": "single",
+  "indent": 2,
   "asi": true,
   "browser": true,
   "eqeqeq": false,
   "eqnull": true,
   "es3": true,
   "expr": true,
-  "jquery": true,
   "latedef": true,
   "laxbreak": true,
   "loopfunc": true,
@@ -23,6 +24,11 @@
   "trailing": true,
   "smarttabs": true,
   "camelcase": false,
-  "quotmark": "single",
-  "indent": 2
+  "jquery": true,
+  "globals": {
+    "angular": false,
+    "$": false,
+    "_": false,
+    "Modernizr": false
+  }
 }
