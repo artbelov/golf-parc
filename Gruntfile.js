@@ -9,8 +9,9 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     bwr: grunt.file.readJSON('bower.json'),
     project: {
-      app: 'app',
-      src: 'src',
+      app: './app',
+      src: './src',
+      index: '<%= project.app %>/index.html',
       assets: '<%= project.app %>/assets',
       components: 'bower_components',
       banner: '/*!\n' +
@@ -50,7 +51,7 @@ module.exports = function (grunt) {
 
     wiredep: {
       app: {
-        src: '<%= project.app %>/index.html',
+        src: '<%= project.index %>',
         exclude: ['<%= project.components %>/bootstrap/dist/css/bootstrap.css', '<%= project.components %>/modernizr/modernizr.js']
       }
     },
@@ -60,13 +61,13 @@ module.exports = function (grunt) {
         options: {
           preserveComments: false
         },
-        uglify: false,
+        uglify: true,
         devFile: '<%= project.components %>/modernizr/modernizr.js',
-        outputFile: '<%= project.assets %>/scripts/modernizr.js',
+        outputFile: '<%= project.assets %>/scripts/modernizr.custom.min.js',
         extra: {
           shiv: true,
           printshiv: true,
-          load: false,
+          load: true,
           mq: false,
           cssclasses: true
         },
@@ -269,14 +270,14 @@ module.exports = function (grunt) {
           }
         }
       },
-      html: '<%= project.app %>/index.html'
+      html: '<%= project.index %>'
     },
 
     usemin: {
       options: {
         assetsDirs: ['<%= project.components %>']
       },
-      html: '<%= project.app %>/index.html',
+      html: '<%= project.index %>',
       css: ['<%= project.assets %>/styles/**/*.css']
     },
 
@@ -289,7 +290,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%= project.src %>/images',
-            src: ['**/*.{png,jpg,gif}'],
+            src: ['**/*.{png,gif,jpg,svg}'],
             dest: '<%= project.assets %>/images'
           }
         ]
@@ -303,7 +304,7 @@ module.exports = function (grunt) {
           ignore: []
         },
         files: {
-          '<%= project.assets %>/styles/bootstrap.css': ['<%= project.app %>/index.html']
+          '<%= project.assets %>/styles/bootstrap.css': ['<%= project.index %>']
         }
       }
     },
