@@ -3,7 +3,7 @@
 
   /* @ngInject */
   function MainCtrl ($, _) {
-    console.log('Angular: ' + angular.version.full + ', jQuery: ' + $.fn.jquery + ', Lo-Dash:' + _.VERSION + ', Modernizr: ' + Modernizr._version);
+    console.log('Angular:' + angular.version.full, 'jQuery:' + $.fn.jquery, 'Lo-Dash:' + _.VERSION, 'Modernizr:' + Modernizr._version);
   }
 
   angular
