@@ -10,24 +10,27 @@
 ![Built with SASS](https://raw.githubusercontent.com/pixel-cookers/built-with-badges/master/sass/sass-short-flat.png)
 ![Built with JADE](https://raw.githubusercontent.com/pixel-cookers/built-with-badges/master/jade/jade-short-flat.png)
 
-**Grunt-окружение для SPA-приложений на основе Bootstrap и Angular.**
+**A front-end Environment for rapid developing a Single-Page Application on AngularJS and Bootstrap.**
 
-### Системные требования
+### Requirements
 - [Node.js](http://nodejs.org/download/)
 - [Grunt](http://gruntjs.com/getting-started)
 - [Bower](http://bower.io/#install-bower)
-- [RubyInstaller](http://rubyinstaller.org/downloads/)
 - [SASS](http://sass-lang.com/install)
+- [Ruby](http://rubyinstaller.org/downloads/)
 
-### Запуск SPA-приложения
+### Quick start
 ```
 npm install -g grunt-cli bower
 npm install
 bower install
 ```
 
-### Основные Grunt-команды
-- `grunt build` — полная сборка и линт кода приложения
-- `grunt serve` — запуск приложения в браузере
-- `grunt lint` — линт исходного кода приложения
-- `grunt` — полная сборкаб линт и запуск приложения
+### Available Grunt commands
+- `grunt build` — compile and optimize the files in your distribution directory
+- `grunt serve` — run app in browser and compile assets when file changes are made
+- `grunt lint` — linting the application JS and CSS source files
+- `grunt` — the combination of all the above commands
+
+### License
+The code is available under the [MIT license](LICENSE.txt).
