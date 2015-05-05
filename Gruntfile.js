@@ -9,10 +9,10 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     bwr: grunt.file.readJSON('bower.json'),
     project: {
-      app: './app',
       src: './src',
-      index: '<%= project.app %>/index.html',
-      assets: '<%= project.app %>/assets',
+      dist: './dist',
+      index: '<%= project.dist %>/index.html',
+      assets: '<%= project.dist %>/assets',
       components: 'bower_components',
       banner: '/*!\n' +
       ' * <%= pkg.title %> v<%= pkg.version %> (<%= grunt.template.today("dd.mm.yyyy") %>)\n' +
@@ -25,13 +25,13 @@ module.exports = function (grunt) {
       options: {
         force: true
       },
-      app: {
-        src: ['<%= project.app %>']
+      dist: {
+        src: ['<%= project.dist %>']
       }
     },
 
     sass: {
-      app: {
+      dist: {
         options: {
           noLineComments: false,
           relativeAssets: true,
@@ -50,14 +50,14 @@ module.exports = function (grunt) {
     },
 
     wiredep: {
-      app: {
+      dist: {
         src: '<%= project.index %>',
         exclude: ['<%= project.components %>/bootstrap/dist/css/bootstrap.css', '<%= project.components %>/modernizr/modernizr.js']
       }
     },
 
     modernizr: {
-      app: {
+      dist: {
         options: {
           preserveComments: false
         },
@@ -88,20 +88,20 @@ module.exports = function (grunt) {
       options: {
         jshintrc: '<%= project.src %>/scripts/.jshintrc'
       },
-      app: ['Gruntfile.js', '<%= project.src %>/scripts/**/*.js', '!<%= project.src %>/scripts/vendor/**/*.js']
+      dist: ['Gruntfile.js', '<%= project.src %>/scripts/**/*.js', '!<%= project.src %>/scripts/vendor/**/*.js']
     },
 
     jscs: {
       options: {
         config: '<%= project.src %>/scripts/.jscsrc'
       },
-      app: {
+      dist: {
         src: ['<%= project.src %>/scripts/**/*.js', '!<%= project.src %>/scripts/vendor/**/*.js']
       }
     },
 
     ngAnnotate: {
-      app: {
+      dist: {
         options: {
           sourceMap: false,
           singleQuotes: true
@@ -118,7 +118,7 @@ module.exports = function (grunt) {
     },
 
     uglify: {
-      app: {
+      dist: {
         options: {
           sourceMap: false,
           preserveComments: false
@@ -139,7 +139,7 @@ module.exports = function (grunt) {
       options: {
         browsers: ['Android 2.3', 'Android >= 4', 'Chrome >= 20', 'Firefox >= 24', 'Explorer >= 8', 'iOS >= 6', 'Opera >= 12', 'Safari >= 6']
       },
-      app: {
+      dist: {
         options: {
           map: false
         },
@@ -158,7 +158,7 @@ module.exports = function (grunt) {
       options: {
         csslintrc: '<%= project.src %>/styles/.csslintrc'
       },
-      app: {
+      dist: {
         files: [
           {
             expand: true,
@@ -171,7 +171,7 @@ module.exports = function (grunt) {
     },
 
     cssmin: {
-      app: {
+      dist: {
         options: {
           sourceMap: false,
           compatibility: 'ie8',
@@ -197,12 +197,12 @@ module.exports = function (grunt) {
       },
       css: {
         files: {
-          src: ['<%= project.assets %>/styles/app.css', '<%= project.assets %>/styles/app.min.css']
+          src: ['<%= project.assets %>/styles/main.css', '<%= project.assets %>/styles/main.min.css']
         }
       },
       js: {
         files: {
-          src: ['<%= project.assets %>/scripts/app.js', '<%= project.assets %>/scripts/app.min.js']
+          src: ['<%= project.assets %>/scripts/main.js', '<%= project.assets %>/scripts/main.min.js']
         }
       }
     },
@@ -211,7 +211,7 @@ module.exports = function (grunt) {
       options: {
         config: '<%= project.src %>/styles/.csscomb.json'
       },
-      app: {
+      dist: {
         files: [
           {
             expand: true,
@@ -248,18 +248,18 @@ module.exports = function (grunt) {
       options: {
         pretty: true
       },
-      app: {
+      dist: {
         expand: true,
         cwd: '<%= project.src %>/templates',
         src: ['**/*.jade', '!**/_*.jade'],
-        dest: '<%= project.app %>',
+        dest: '<%= project.dist %>',
         ext: '.html'
       }
     },
 
     useminPrepare: {
       options: {
-        dest: '<%= project.app %>',
+        dest: '<%= project.dist %>',
         flow: {
           html: {
             steps: {
@@ -282,7 +282,7 @@ module.exports = function (grunt) {
     },
 
     imagemin: {
-      app: {
+      dist: {
         options: {
           optimizationLevel: 3
         },
@@ -315,15 +315,15 @@ module.exports = function (grunt) {
       },
       js: {
         files: '<%= project.src %>/scripts/**/*.js',
-        tasks: ['ngAnnotate', 'uglify:app', 'usebanner:js', 'bs-inject']
+        tasks: ['ngAnnotate', 'uglify:dist', 'usebanner:js', 'bs-inject']
       },
       sass: {
         files: '<%= project.src %>/styles/**/*.{scss,sass}',
-        tasks: ['newer:imagemin', 'newer:copy', 'sass', 'csscomb', 'autoprefixer', 'cssmin:app', 'usebanner:css', 'bs-inject']
+        tasks: ['newer:imagemin', 'newer:copy', 'sass', 'csscomb', 'autoprefixer', 'cssmin:dist', 'usebanner:css', 'bs-inject']
       },
       jade: {
         files: '<%= project.src %>/templates/**/*.jade',
-        tasks: ['newer:imagemin', 'newer:copy', 'jade', 'uncss', 'wiredep', 'useminPrepare', 'usemin', 'ngAnnotate', 'uglify:app', 'csscomb', 'cssmin:app', 'usebanner:css', 'bs-inject']
+        tasks: ['newer:imagemin', 'newer:copy', 'jade', 'uncss', 'wiredep', 'useminPrepare', 'usemin', 'ngAnnotate', 'uglify:dist', 'csscomb', 'cssmin:dist', 'usebanner:css', 'bs-inject']
       },
       images: {
         files: '<%= project.src %>/images',
@@ -343,7 +343,7 @@ module.exports = function (grunt) {
     var done;
     done = this.async();
     bs({
-      server: './app',
+      server: './dist',
       ghostMode: false
     }, function () {
       done();
@@ -360,5 +360,5 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', ['bs-init', 'watch']);
 
-  grunt.registerTask('build', ['clean', 'imagemin', 'copy', 'jade', 'uncss', 'wiredep', 'useminPrepare', 'sass', 'modernizr', 'autoprefixer', 'cssmin:generated', 'ngAnnotate', 'concat:generated', 'uglify:generated', 'usemin', 'uglify:app', 'csscomb', 'cssmin:app', 'usebanner']);
+  grunt.registerTask('build', ['clean', 'imagemin', 'copy', 'jade', 'uncss', 'wiredep', 'useminPrepare', 'sass', 'modernizr', 'autoprefixer', 'cssmin:generated', 'ngAnnotate', 'concat:generated', 'uglify:generated', 'usemin', 'uglify:dist', 'csscomb', 'cssmin:dist', 'usebanner']);
 };
