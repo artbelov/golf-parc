@@ -164,22 +164,6 @@ module.exports = function (grunt) {
       }
     },
 
-    csslint: {
-      options: {
-        csslintrc: '<%= project.src %>/styles/.csslintrc'
-      },
-      dist: {
-        files: [
-          {
-            expand: true,
-            cwd: '<%= project.assets %>/styles',
-            src: ['*.css', '!*.min.css', '!bootstrap.css'],
-            dest: '<%= project.assets %>/styles'
-          }
-        ]
-      }
-    },
-
     cssmin: {
       dist: {
         options: {
@@ -362,7 +346,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', ['lint', 'build', 'serve']);
 
-  grunt.registerTask('lint', ['jshint', 'jscs', 'csslint']);
+  grunt.registerTask('lint', ['jshint', 'jscs']);
 
   grunt.registerTask('serve', ['bs-init', 'watch']);
 
