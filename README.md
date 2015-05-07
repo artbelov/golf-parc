@@ -2,6 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/artbelov/golf-parc/master.svg?style=flat)](https://travis-ci.org/artbelov/golf-parc)
 [![devDependency Status](https://img.shields.io/david/dev/artbelov/golf-parc.svg?style=flat)](https://david-dm.org/artbelov/golf-parc#info=devDependencies)
+[![Code Climate](https://codeclimate.com/github/artbelov/golf-parc/badges/gpa.svg)](https://codeclimate.com/github/artbelov/golf-parc)
 
 ![Built with Grunt](https://raw.githubusercontent.com/pixel-cookers/built-with-badges/master/grunt/grunt-short-flat.png)
 ![Built with Bower](https://raw.githubusercontent.com/pixel-cookers/built-with-badges/master/bower/bower-short-flat.png)
@@ -10,7 +11,9 @@
 ![Built with SASS](https://raw.githubusercontent.com/pixel-cookers/built-with-badges/master/sass/sass-short-flat.png)
 ![Built with JADE](https://raw.githubusercontent.com/pixel-cookers/built-with-badges/master/jade/jade-short-flat.png)
 
-**A front-end Environment for rapid developing a Single-Page Application on AngularJS and Bootstrap.**
+**A front-end environment for rapid developing a single-page applications on AngularJS and Bootstrap.**
+
+---
 
 ### Requirements
 - [Node.js](http://nodejs.org/download/)

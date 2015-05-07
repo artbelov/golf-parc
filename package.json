@@ -1,9 +1,10 @@
 {
   "name": "golf-parc",
   "title": "Golf Parc",
-  "description": "Grunt workflow for SPA-Application on the basis of Bootstrap and Angular.",
+  "description": "A front-end environment for rapid developing a single-page applications on AngularJS and Bootstrap.",
   "version": "1.0.0",
   "author": "Artem Belov <artbelov@live.ru>",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git://github.com/artbelov/golf-parc"
@@ -39,11 +40,11 @@
     "grunt-modernizr": "^0.6.0",
     "grunt-newer": "^1.1.0",
     "grunt-ng-annotate": "^0.10.0",
-    "grunt-sass": "^0.18.1",
+    "grunt-sass": "^1.0.0",
     "grunt-uncss": "^0.4.2",
     "grunt-usemin": "^3.0.0",
     "grunt-wiredep": "^2.0.0",
     "jit-grunt": "^0.9.1",
-    "time-grunt": "^1.1.1"
+    "time-grunt": "^1.2.0"
   }
 }
