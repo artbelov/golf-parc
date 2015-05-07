@@ -50,9 +50,12 @@ module.exports = function (grunt) {
     },
 
     wiredep: {
-      dist: {
+      html: {
         src: '<%= project.index %>',
-        exclude: ['<%= project.components %>/bootstrap/dist/css/bootstrap.css', '<%= project.components %>/modernizr/modernizr.js']
+        exclude: ['<%= project.components %>/bootstrap/dist/css/bootstrap.css', '<%= project.components %>/bootstrap/dist/js/bootstrap.js', '<%= project.components %>/modernizr/modernizr.js']
+      },
+      scss: {
+        src: '<%= project.src %>/styles/main.scss'
       }
     },
 
@@ -283,14 +286,11 @@ module.exports = function (grunt) {
 
     imagemin: {
       dist: {
-        options: {
-          optimizationLevel: 3
-        },
         files: [
           {
             expand: true,
             cwd: '<%= project.src %>/images',
-            src: ['**/*.{png,gif,jpg,svg}'],
+            src: ['**/*.{png,gif,jpg,jpeg,svg}'],
             dest: '<%= project.assets %>/images'
           }
         ]
@@ -313,15 +313,15 @@ module.exports = function (grunt) {
       options: {
         spawn: false
       },
-      js: {
+      scripts: {
         files: '<%= project.src %>/scripts/**/*.js',
         tasks: ['ngAnnotate', 'uglify:dist', 'usebanner:js', 'bs-inject']
       },
-      sass: {
+      styles: {
         files: '<%= project.src %>/styles/**/*.{scss,sass}',
         tasks: ['newer:imagemin', 'newer:copy', 'sass', 'csscomb', 'autoprefixer', 'cssmin:dist', 'usebanner:css', 'bs-inject']
       },
-      jade: {
+      templates: {
         files: '<%= project.src %>/templates/**/*.jade',
         tasks: ['newer:imagemin', 'newer:copy', 'jade', 'uncss', 'wiredep', 'useminPrepare', 'usemin', 'ngAnnotate', 'uglify:dist', 'csscomb', 'cssmin:dist', 'usebanner:css', 'bs-inject']
       },
@@ -344,6 +344,7 @@ module.exports = function (grunt) {
     done = this.async();
     bs({
       server: './dist',
+      notify: false,
       ghostMode: false
     }, function () {
       done();
