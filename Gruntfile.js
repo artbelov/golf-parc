@@ -1,9 +1,16 @@
 /* global module */
 
-var bs = require('browser-sync');
-
 module.exports = function (grunt) {
   'use strict';
+
+  var bs = require('browser-sync');
+
+  require('time-grunt')(grunt);
+
+  require('jit-grunt')(grunt, {
+    useminPrepare: 'grunt-usemin',
+    usebanner: 'grunt-banner'
+  });
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -52,10 +59,10 @@ module.exports = function (grunt) {
     wiredep: {
       html: {
         src: '<%= project.index %>',
-        exclude: ['<%= project.components %>/bootstrap/dist/css/bootstrap.css', '<%= project.components %>/bootstrap/dist/js/bootstrap.js', '<%= project.components %>/modernizr/modernizr.js']
+        exclude: ['<%= project.components %>/bootstrap-sass-official/assets/javascripts/bootstrap.js', '<%= project.components %>/modernizr/modernizr.js']
       },
       scss: {
-        src: '<%= project.src %>/styles/main.scss'
+        src: '<%= project.src %>/styles/**/*.{scss,sass}'
       }
     },
 
@@ -244,6 +251,12 @@ module.exports = function (grunt) {
         cwd: '<%= project.src %>/images',
         src: ['**/*.svg'],
         dest: '<%= project.assets %>/images'
+      },
+      glyphicons: {
+        expand: true,
+        cwd: '<%= project.vendor %>/bootstrap-sass-official/assets/fonts/bootstrap/*',
+        src: '*',
+        dest: '<%= project.assets %>/fonts'
       }
     },
 
@@ -298,13 +311,12 @@ module.exports = function (grunt) {
     },
 
     uncss: {
-      bootstrap: {
+      dist: {
         options: {
-          stylesheets: ['../<%= project.components %>/bootstrap/dist/css/bootstrap.css'],
-          ignore: []
+          stylesheets: ['../<%= project.assets %>/styles/main.css']
         },
         files: {
-          '<%= project.assets %>/styles/bootstrap.css': ['<%= project.index %>']
+          '<%= project.assets %>/styles/main.css': ['<%= project.dist %>/**/*.html']
         }
       }
     },
@@ -319,11 +331,11 @@ module.exports = function (grunt) {
       },
       styles: {
         files: '<%= project.src %>/styles/**/*.{scss,sass}',
-        tasks: ['newer:imagemin', 'newer:copy', 'sass', 'csscomb', 'autoprefixer', 'cssmin:dist', 'usebanner:css', 'bs-inject']
+        tasks: ['newer:imagemin', 'newer:copy', 'sass', 'uncss', 'csscomb', 'autoprefixer', 'cssmin:dist', 'usebanner:css', 'bs-inject']
       },
       templates: {
         files: '<%= project.src %>/templates/**/*.jade',
-        tasks: ['newer:imagemin', 'newer:copy', 'jade', 'uncss', 'wiredep', 'useminPrepare', 'usemin', 'ngAnnotate', 'uglify:dist', 'csscomb', 'cssmin:dist', 'usebanner:css', 'bs-inject']
+        tasks: ['newer:imagemin', 'newer:copy', 'jade', 'wiredep', 'useminPrepare', 'usemin', 'ngAnnotate', 'uglify:dist', 'csscomb', 'cssmin:dist', 'usebanner:css', 'bs-inject']
       },
       images: {
         files: '<%= project.src %>/images',
@@ -332,16 +344,9 @@ module.exports = function (grunt) {
     }
   });
 
-  require('time-grunt')(grunt);
-
-  require('jit-grunt')(grunt, {
-    useminPrepare: 'grunt-usemin',
-    usebanner: 'grunt-banner'
-  });
-
   grunt.registerTask('bs-init', 'Start BrowserSync Server', function () {
-    var done;
-    done = this.async();
+    var done = this.async();
+
     bs({
       server: './dist',
       notify: false,
@@ -355,11 +360,11 @@ module.exports = function (grunt) {
     return bs.reload();
   });
 
-  grunt.registerTask('default', ['build', 'lint', 'serve']);
+  grunt.registerTask('default', ['lint', 'build', 'serve']);
 
   grunt.registerTask('lint', ['jshint', 'jscs', 'csslint']);
 
   grunt.registerTask('serve', ['bs-init', 'watch']);
 
-  grunt.registerTask('build', ['clean', 'imagemin', 'copy', 'jade', 'uncss', 'wiredep', 'useminPrepare', 'sass', 'modernizr', 'autoprefixer', 'cssmin:generated', 'ngAnnotate', 'concat:generated', 'uglify:generated', 'usemin', 'uglify:dist', 'csscomb', 'cssmin:dist', 'usebanner']);
+  grunt.registerTask('build', ['clean', 'imagemin', 'copy', 'jade', 'wiredep', 'useminPrepare', 'sass', 'uncss', 'modernizr', 'autoprefixer', 'cssmin:generated', 'ngAnnotate', 'concat:generated', 'uglify:generated', 'usemin', 'uglify:dist', 'csscomb', 'cssmin:dist', 'usebanner']);
 };
