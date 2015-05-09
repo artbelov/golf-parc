@@ -11,11 +11,14 @@
 ![Built with SASS](https://raw.githubusercontent.com/pixel-cookers/built-with-badges/master/sass/sass-short-flat.png)
 ![Built with JADE](https://raw.githubusercontent.com/pixel-cookers/built-with-badges/master/jade/jade-short-flat.png)
 
-**A front-end environment for rapid developing a single-page applications on AngularJS and Bootstrap.**
+---
+
+**A front-end environment for rapid developing single-page applications on AngularJS and Bootstrap.**
 
 ---
 
 ### Requirements
+
 - [Node.js](http://nodejs.org/download/)
 - [Grunt](http://gruntjs.com/getting-started)
 - [Bower](http://bower.io/#install-bower)
@@ -23,17 +26,24 @@
 - [Ruby](http://rubyinstaller.org/downloads/)
 
 ### Quick start
-```
+
+1. [Download the latest version](https://github.com/artbelov/golf-parc/archive/master.zip).
+2. Replace `artbelov/golf-parc` to `username/repo-name`.
+3. Replace `golf-parc` and `Golf Parc` to a project title. 
+4. Type these commands to install a dependencies:
+```sh
 npm install -g grunt-cli bower
 npm install
 bower install
 ```
 
 ### Available Grunt commands
+
 - `grunt build` — compile and optimize the files in your distribution directory
 - `grunt serve` — run app in browser and compile assets when file changes are made
 - `grunt lint` — linting the application JS and CSS source files
 - `grunt` — the combination of all the above commands
 
 ### License
+
 The code is available under the [MIT license](LICENSE.txt).
