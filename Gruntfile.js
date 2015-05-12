@@ -1,8 +1,8 @@
-/* global module */
+/* node: true */
+
+'use strict';
 
 module.exports = function (grunt) {
-  'use strict';
-
   var bs = require('browser-sync');
 
   require('time-grunt')(grunt);
@@ -16,11 +16,11 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     bwr: grunt.file.readJSON('bower.json'),
     project: {
-      src: './src',
-      dist: './dist',
+      src: 'src',
+      dist: 'dist',
       index: '<%= project.dist %>/index.html',
       assets: '<%= project.dist %>/assets',
-      components: 'bower_components',
+      components: grunt.file.readJSON('.bowerrc').directory,
       banner: '/*!\n' +
       ' * <%= pkg.title %> v<%= pkg.version %> (<%= grunt.template.today("dd.mm.yyyy") %>)\n' +
       ' * Copyright by <%= pkg.author %>\n' +
@@ -33,7 +33,8 @@ module.exports = function (grunt) {
         force: true
       },
       dist: {
-        src: ['<%= project.dist %>']
+        dot: true,
+        src: ['<%= project.dist %>/*', '!<%= project.dist %>/.git*']
       }
     },
 
@@ -42,7 +43,7 @@ module.exports = function (grunt) {
         options: {
           noLineComments: false,
           relativeAssets: true,
-          sourceMap: false
+          sourceMap: true
         },
         files: [
           {
@@ -106,14 +107,14 @@ module.exports = function (grunt) {
         config: '<%= project.src %>/scripts/.jscsrc'
       },
       dist: {
-        src: ['<%= project.src %>/scripts/**/*.js', '!<%= project.src %>/scripts/vendor/**/*.js']
+        src: ['Gruntfile.js', '<%= project.src %>/scripts/**/*.js', '!<%= project.src %>/scripts/vendor/**/*.js']
       }
     },
 
     ngAnnotate: {
       dist: {
         options: {
-          sourceMap: false,
+          sourceMap: true,
           singleQuotes: true
         },
         files: [
@@ -150,9 +151,6 @@ module.exports = function (grunt) {
         browsers: ['Android 2.3', 'Android >= 4', 'Chrome >= 20', 'Firefox >= 24', 'Explorer >= 8', 'iOS >= 6', 'Opera >= 12', 'Safari >= 6']
       },
       dist: {
-        options: {
-          map: false
-        },
         files: [
           {
             expand: true,
@@ -167,7 +165,6 @@ module.exports = function (grunt) {
     cssmin: {
       dist: {
         options: {
-          sourceMap: false,
           compatibility: 'ie8',
           keepSpecialComments: '*',
           advanced: false
@@ -332,7 +329,7 @@ module.exports = function (grunt) {
     var done = this.async();
 
     bs({
-      server: './dist',
+      server: 'dist',
       notify: false,
       ghostMode: false
     }, function () {
