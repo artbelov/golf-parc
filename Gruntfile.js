@@ -69,28 +69,13 @@ module.exports = function (grunt) {
 
     modernizr: {
       dist: {
-        options: {
-          preserveComments: false
-        },
-        uglify: true,
         devFile: '<%= project.components %>/modernizr/modernizr.js',
-        outputFile: '<%= project.assets %>/scripts/modernizr.custom.min.js',
-        extra: {
-          shiv: true,
-          printshiv: true,
-          load: true,
-          mq: false,
-          cssclasses: true
-        },
-        extensibility: {
-          addtest: false,
-          prefixed: true,
-          teststyles: false,
-          testprops: false,
-          testallprops: false,
-          hasevents: false,
-          prefixes: true,
-          domprefixes: true
+        outputFile: '<%= project.assets %>/scripts/modernizr.custom.js',
+        files: {
+          src: [
+            '<%= project.assets %>/scripts/**/*.js',
+            '<%= project.assets %>/styles/**/*.css'
+          ]
         }
       }
     },
