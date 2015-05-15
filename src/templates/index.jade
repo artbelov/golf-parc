@@ -14,10 +14,14 @@ html.no-js(lang='', ng-app='golf-parc', ng-controller='MainCtrl', ng-strict-di='
     // endbuild
 
     // CSS Main
-    link(rel='stylesheet', href='assets/styles/main.min.css')
+    // build:css assets/styles/main.min.css
+    link(rel='stylesheet', href='assets/styles/main.css')
+    // endbuild
 
     // Custom Modernizr Build
-    script(src='assets/scripts/modernizr.custom.min.js')
+    // build:js assets/scripts/modernizr.custom.min.js
+    script(src='assets/scripts/modernizr.custom.js')
+    // endbuild
 
   body
     h1 Golf Parc
@@ -29,4 +33,6 @@ html.no-js(lang='', ng-app='golf-parc', ng-controller='MainCtrl', ng-strict-di='
     // endbuild
 
     // JS Main
-    script(src='assets/scripts/main.min.js')
+    // build:js assets/scripts/main.min.js
+    script(src='assets/scripts/main.js')
+    // endbuild
