@@ -5,16 +5,13 @@
   "version": "1.0.0",
   "author": "Artem Belov <artbelov@live.ru>",
   "private": true,
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/artbelov/golf-parc"
   },
   "bugs": {
     "url": "https://github.com/artbelov/golf-parc/issues"
-  },
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/artbelov/golf-parc/blob/master/LICENSE.txt"
   },
   "engines": {
     "node": ">=0.10.0"
